@@ -1,0 +1,6 @@
+venv/
+__pychache__/
+*.pyc
+run_log.ndjson
+generated_playlists/
+

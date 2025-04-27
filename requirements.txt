@@ -1,0 +1,4 @@
+Flask==2.3.3
+nltk==3.8.1
+nrclex==4.0
+youtube-search-python==1.6.6

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MelodyMatch</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    {% if show_landing %}
+    <div id="landing-screen">
+        <h1 class="logo"> MelodyMatch </h1>
+        <p class="tagline">Find the perfect music for your mood</p>
+    </div>
+    {% endif %}
+
+    <div id="loading-screen">
+        <i class="fas fa-compact-disc fa-spin fa-3x loading-icon"></i>
+        <p id="loading-tip" style="margin-top: 15px; font-style: italic; color: #ffffff;"></p> 
+    </div>
+    <div id="mood-animation-left" class="mood-animation"></div>
+    <div id="mood-animation-right" class="mood-animation"></div>
+
+    <div class="container {% if show_landing %}fade-in{% endif %}">
+
+        <h1> MelodyMatch </h1>
+
+        <!-- Dark mode / Light mode toggle -->
+        <div class="theme-toggle">
+            <span class="toggle-label">Color Mode</span>
+            <label class="switch">
+                <input type="checkbox" id="toggle-theme">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+        <!-- Main form with entry and filters -->
+        <form method="POST">
+
+            <label for="feeling">How are you feeling?</label><br>
+
+            <div class="voice-input-wrapper">
+                <input type="text" id="feeling" name="feeling" placeholder="Type your mood..." required>
+                <button type="button" id="start-voice"><i class="fas fa-microphone"></i></button>
+            </div>
+
+            <div class="form-filters">
+                <label for="genre">Select a genre (optional):</label><br>
+                <select id="genre" name="genre">
+                    <option value="">Any Genre</option>
+                    <option value="pop">Pop</option>
+                    <option value="rock">Rock</option>
+                    <option value="edm">EDM</option>
+                    <option value="lofi">Lo-fi</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="classical">Classical</option>
+                    <option value="r&b">R&B</option>
+                    <option value="hip hop">Hip Hop</option>
+                    <option value="indie">Indie</option>
+                    <option value="country">Country</option>
+                    <option value="instrumental">Instrumental</option>
+                    <option value="ambient">Ambient</option>
+                    <option value="kpop">K-pop</option>
+                    <option value="metal">Metal</option>
+                    <option value="blues">Blues</option>
+                    <option value="folk">Folk</option>
+                </select>
+
+                <label>
+                    <input type="checkbox" id="preferPlaylist" name="preferPlaylist">
+                    Favor playlists if available 
+                </label>
+
+                <label>
+                    <input type="checkbox" id="preferTopArtists" name="preferTopArtists">
+                    Prefer popular artists
+                </label>
+                
+            </div>
+        
+            <button type="submit">Get Songs</button>
+        </form>
+
+    
+        
+        
+
+        <!-- Dynamic results area -->
+        <div id="results" style="display: none;">
+
+
+
+            <h2 id="mood-title"></h2>
+
+            <h3><i class="fas fa-list"></i> Recommended Songs:</h3>
+            <ul id="song-list"></ul>
+
+            <p>
+                <i class="fas fa-download"></i>
+                <a id="download-link" href="#" download style="display: none;">Download Your Playlist</a>
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Optional background music animation -->
+    <!-- <i class="fas fa-music music-note"></i> -->
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
