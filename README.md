@@ -1,4 +1,4 @@
-MelodyMatch: An Emotion-Aware Music Recommender
+Melody+Match: An Emotion-Aware Music Recommender
 
 MelodyMatch is a lightweight local web application that analyzes your emotions based on text input and recommends music accordingly.  
 It supports both **individual song suggestions** and **full playlist generation**, with **genre filtering**, **top artist boosting**, and **animated mood reactions**.
